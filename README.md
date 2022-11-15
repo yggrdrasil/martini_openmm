@@ -9,7 +9,7 @@ The suite of tests is run automatically. The current status of these tests is:
 [![martini_openmm](https://github.com/maccallumlab/martini_openmm/actions/workflows/CI.yml/badge.svg)](https://github.com/maccallumlab/martini_openmm/actions)
 
 The test systems include:
-- Simple and more complex mixtured of lipids;
+- Simple and more complex mixtures of lipids;
 - Soluble membrane proteins, with elastic networks setups for Martini 2 and 3, and including Go model for Martini 3;
 Membrane proteins with elastic network setup for Martini 2 and 3;
 - A pentapetide in water with Martini 2.3P polarizable force field[^5];
@@ -24,6 +24,7 @@ To run the tests, use `pytest` in the root directory after installation.
 ## Limitations
 - Martini 2 cholesterol. The standard Martini 2 cholesterol topology uses a constraint network that, while can be solved by LINCS in GROMACS, cannot be solved by the Constant Constraint Matrix Approximation (CCMA) algorithm in OpenMM, thus leading to instabilities.
     - We have developed an alternative topology to be used in OpenMM. Before running an OpenMM Martini 2 simulation with cholesterol, the user needs to manually replace the cholesterol topology. The modified topology can be found in the folder `cholesterol`.
+- Electrostatics: Currently, this implementation supports reaction-field only.
 - Math in .itp files:
     - Gromacs allows for mathematical expressions to be used in .itp files. For example:
         - `    1     6      1   0.98112 RUBBER_FC*1.000000`
